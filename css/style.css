@@ -34,6 +34,8 @@
 body{
 
   font-family:  var(--font-body);
+  background: var(--bg); 
+  color: var(--ink); 
 }
 
 
@@ -112,15 +114,61 @@ h1, h2, h3 {
 }
 
 #our-story{
-  background: var(--leaf);
-  color: var(--bg);
+  /* background: var(--leaf); */
+  /* color: var(--bg); */
   padding: 4rem 0;
   text-align: center;
 }
 
 
+/* what we offer section */
 
 
+
+#what-we-offer .offer-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+#what-we-offer .offer-card::after {
+  content: "";
+  position: absolute;
+  top:50%;
+  left:0;
+  right:0;
+  bottom:0;
+  background: linear-gradient(transparent, rgb(0 0 0 / 65%));
+}
+
+/* overlay the card title over the image */
+
+#what-we-offer .offer-card-title {
+  position: absolute;
+  z-index: 1;
+  bottom: 1rem;
+  left: 1rem;
+  margin: 0;
+  color: white;
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+}
+
+
+/* make all images fill their containers and maintain same height */
+
+#what-we-offer .carousel-inner img {
+  display: block;
+  width: 100%;
+  height: clamp(12rem, 35vw, 24rem);
+  object-fit: cover;
+}
+
+button[data-bs-slide] { 
+  background: var(--lime);
+
+}
 
 
 

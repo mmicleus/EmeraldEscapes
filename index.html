@@ -1,84 +1,240 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head> 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Emerald Escapes | Holidays and short breaks in Ireland</title>
     <!-- adding Google Fonts  -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
-<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
-<!-- importing Google Fonts -->
- <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe"
+      crossorigin="anonymous"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
+      crossorigin="anonymous"
+    ></script>
+    <!-- importing Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-      <!-- linking external CSS -->
-      <link rel="stylesheet" href="css/style.css">
-</head>
-<body> 
-
+    <!-- linking external CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <!-- navbar -->
 
- <nav class="navbar md:navbar-expand  bg-body-tertiary" id="primary-nav">
-  <div class="md:container">
-    <a class="navbar-brand" href="#" id="logo">Emerald Escapes</a>
-    <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarDrawer" aria-controls="navbarDrawer" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon" aria-hidden="true"></span>
-    </button>
-    <dialog class="drawer drawer-end" tabindex="-1" id="navbarDrawer" aria-labelledby="navbarDrawerLabel">
-      <div class="drawer-header">
-        <h5 class="drawer-title" id="navbarDrawerLabel">Menu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+    <nav class="navbar md:navbar-expand bg-body-tertiary" id="primary-nav">
+      <div class="md:container">
+        <a class="navbar-brand" href="#" id="logo">Emerald Escapes</a>
+        <button
+          class="btn-icon navbar-toggler"
+          type="button"
+          data-bs-toggle="drawer"
+          data-bs-target="#navbarDrawer"
+          aria-controls="navbarDrawer"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+        </button>
+        <dialog
+          class="drawer drawer-end"
+          tabindex="-1"
+          id="navbarDrawer"
+          aria-labelledby="navbarDrawerLabel"
+        >
+          <div class="drawer-header">
+            <h5 class="drawer-title" id="navbarDrawerLabel">Menu</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="drawer"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="drawer-body mb-2 md:mb-0">
+            <ul class="nav navbar-nav ms-auto" id="menu-list">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Experiences</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Dark / light</a>
+              </li>
+            </ul>
+          </div>
+        </dialog>
       </div>
-      <div class="drawer-body mb-2 md:mb-0">
-        <ul class="nav navbar-nav ms-auto" id="menu-list">
-          <li class="nav-item">
-            <a class="nav-link  active" aria-current="page" href="#">Home</a>
-          </li> 
-          <li class="nav-item">
-            <a class="nav-link " href="#">Experiences</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="#">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Dark / light</a>
-          </li>
-        </ul>
-      </div>
-    </dialog>
-  </div>
-</nav>
+    </nav>
 
-<!-- hero section -->
+    <!-- hero section -->
 
-    
-   <div class="container-fluid d-flex justify-content-center align-items-center" id ="hero">
-        <div class="container" id="hero-content" >
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h1>Explore More.Discover Ireland.</h1>
-                </div>
-                <div class="col-12 text-center">
-                    <p>Discover the beauty of Ireland with our unforgettable holidays and short breaks.</p>
-                </div>
-                <div class="col-12 text-center">
-                    <a href="#" class="btn btn-solid">Browse experiences</a>
-                </div>
-            </div>
-            
-            
-            
+    <div
+      class="container-fluid d-flex justify-content-center align-items-center"
+      id="hero"
+    >
+      <div class="container" id="hero-content">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h1>Explore More.Discover Ireland.</h1>
+          </div>
+          <div class="col-12 text-center">
+            <p>
+              Discover the beauty of Ireland with our unforgettable holidays and
+              short breaks.
+            </p>
+          </div>
+          <div class="col-12 text-center">
+            <a href="#" class="btn btn-solid">Browse experiences</a>
+          </div>
         </div>
+      </div>
+    </div>
 
-   </div>
+    <!-- our story section -->
 
+    <div
+      class="container-fluid d-flex justify-content-center align-items-center"
+      id="our-story"
+    >
+      <div class="container" id="our-story-content">
+        <div class="row">
+          <div class="col-12 text-start">
+            <h3 class="mb-5">Our Story</h3>
+          </div>
+          <div class="col-12 text-start">
+            <p>
+              Emerald Escapes began in 2015 when two friends from Galway got
+              tired of watching visitors queue at the same five attractions. We
+              now plan holidays and short breaks across all 32 counties, with a
+              focus on places and hosts that most itineraries skip.
+            </p>
+            <p>
+              We design trips for couples after a long weekend, families looking
+              for easy days out, overseas visitors tracing their roots, and
+              groups of friends who want something outdoors.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- what we offer section -->
 
+    <div
+      class="container-fluid d-flex justify-content-center align-items-center"
+      id="what-we-offer"
+    >
+      <div class="container" id="what-we-offer-content">
+        <div class="row">
+          <!-- <div class="col-12 text-start">
+            <h3 class="mb-5">What we offer</h3>
+          </div> -->
+          <div class="col-12">
+            <div
+              id="carouselMultiple"
+              class="carousel slide"
+              data-bs-ends="stop"
+              style="--bs-carousel-items: 3; --bs-carousel-items-gap: 1rem"
+            >
+              <div class="d-flex justify-content-between align-items-center">
+                <!-- <h5 class="mb-0"></h5> -->
+                  <h3 class="mb-5">What we offer</h3>
+                <div>
+                  <button
+                    class="btn-icon btn-sm"
+                    type="button"
+                    data-bs-target="#carouselMultiple"
+                    data-bs-slide="prev"
+                    style="--bs-carousel-control-icon-width: 1rem"
+                  >
+                    <span class="carousel-icon-prev" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button
+                    class="btn-icon btn-sm"
+                    type="button"
+                    data-bs-target="#carouselMultiple"
+                    data-bs-slide="next"
+                    style="--bs-carousel-control-icon-width: 1rem"
+                  >
+                    <span class="carousel-icon-next" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
 
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="offer-card">
+                    <img
+                      src="images/DublinBridge.webp"
+                      class="d-block w-100"
+                      alt="Samuel Beckett Bridge in Dublin at sunset"
+                    />
+                    <h3 class="offer-card-title">CITY BREAKS</h3>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="offer-card">
+                    <img
+                      src="images/irish coast 1.avif"
+                      class="d-block w-100"
+                      alt="Irish Coast 1"
+                    />
+                    <h3 class="offer-card-title">COASTAL</h3>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="offer-card">
+                    <img
+                      src="images/ring-of-kerry.webp"
+                      class="d-block w-100"
+                      alt="Ring of Kerry"
+                    />
+                    <h3 class="offer-card-title">COUNTRYSIDE</h3>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="offer-card">
+                    <img
+                      src="images/family.jpg"
+                      class="d-block w-100"
+                      alt="Family enjoying a day out"
+                    />
+                    <h3 class="offer-card-title">FAMILY</h3>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="offer-card">
+                    <img
+                      src="images/Kilkenny-Castle.jpg"
+                      class="d-block w-100"
+                      alt="Kilkenny Castle"
+                    />
+                    <h3 class="offer-card-title">CULTURAL</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    
-<script src="js/main.js"></script>
-</body>
+    <script src="js/main.js"></script>
+  </body>
 </html>
-            
