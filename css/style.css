@@ -231,70 +231,32 @@ button[data-bs-slide] {
   }
 }
 
-/* 
-.hero { background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)), url("../images/destination-kerry.webp") center/cover;
-  color: #fff; min-height: 90vh; min-height: 90svh; display: flex; align-items: center; padding: 7rem 0 6rem; }
-.hero .wrap { text-align: center; }
-.hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 auto 1rem; max-width: 18ch; }
-.hero p { max-width: 50ch; font-size: 1.15rem; margin: 0 auto 2rem; } */
-
-/* mobile */
-/* @media (max-width: 768px) {
-
-   .header-container{ 
-    position: relative; 
-    justify-content: space-between; 
-    flex-wrap: nowrap; 
-    }
-
-
-   .mobile-menu-toggle { 
-    
-    display: grid; 
-    place-items: center; 
-    width: 2.75rem; 
-    height: 2.75rem; 
-    padding: .45rem;
-    border: 1px solid #ffffff70; 
-    border-radius: 8px; 
-    background: transparent; 
-    color: var(--green); 
-    cursor: pointer;
-  }
-
-  .mobile-menu-toggle svg { 
-    width: 100%; 
-    height: 100%; 
-    fill: none; 
-    stroke: currentColor; 
-    stroke-linecap: round; 
-    stroke-width: 2.7; 
-  }
-
-  /* show mobile menu toggle */
-/* .mobile-menu-toggle {
-    display: grid;
-  } */
-
-/* hide primary navigation on mobile */
-/* #primary-nav { 
-    position: absolute; 
-    top: 100%; 
-    right: 0; 
-    z-index: 11; 
-    display: none; 
-    align-items: stretch; 
-    flex-direction: column;
-    gap: .5rem; 
-    width: min(15rem, 92vw); 
-    padding: .75rem; 
-    border: 1px solid #ffffff40; 
-    border-radius: 12px;
-    background: var(--leaf); 
-    box-shadow: 0 8px 24px rgba(0,0,0,.2); 
-  }
-
-  /* when open */
-/* #primary-nav.open { 
-    display: flex; 
-  }  */
+/* experiences cards */
+.chip { background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 20px; padding: .4rem 1rem; cursor: pointer; transition: transform .15s, background .15s; }
+.chip:hover { transform: translateY(-2px); }
+.chip.on { background: var(--green); color: #fff; border-color: var(--green); }
+.cards { display: grid; gap: 1rem; padding: 0; margin: 0; list-style: none; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; overflow: hidden;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: 500px;
+  transition: transform .25s, box-shadow .25s; }
+.card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,.14); }
+.card-gallery { position: relative; min-height: 500px; overflow: hidden; background: var(--line); }
+.card-gallery .gallery-image { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; }
+.gallery-arrow { position: absolute; top: 50%; width: 2.5rem; height: 2.5rem; padding: 0; border: 1px solid var(--lime);
+  border-radius: 50%; background: rgba(23,56,3,.78); color: #fff; font-size: 1.8rem; line-height: 1;
+  cursor: pointer; transform: translateY(-50%); }
+.gallery-arrow:hover { background: var(--green); }
+.gallery-previous { left: .8rem; }
+.gallery-next { right: .8rem; }
+.gallery-count { position: absolute; bottom: .7rem; left: 50%; padding: .1rem .55rem; border-radius: 1rem;
+  background: rgba(23,56,3,.75); color: #fff; font-size: .8rem; transform: translateX(-50%); }
+.card .body { padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+.card h3 { margin: 0; font-size: 1.2rem; }
+.loc { color: var(--blue); font-weight: 600; font-size: .9rem; }
+.card p { margin: 0; color: var(--muted); flex: 1; }
+.meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-top: .5rem; }
+.price { font-weight: 800; font-size: 1.65rem; white-space: nowrap; }
+.fav { position: absolute; top: .8rem; right: .8rem; display: grid; place-items: center; width: 2.5rem; height: 2.5rem;
+  border: 1px solid #fff; border-radius: 50%; background: rgba(23,56,3,.78); font-size: 1.5rem; cursor: pointer; color: #fff; }
+.fav[aria-pressed="true"] { color: #d6403a; }
+#empty { display: none; padding: 2rem; text-align: center; color: var(--muted); }

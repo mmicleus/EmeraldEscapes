@@ -28,6 +28,79 @@ var experiences = [
 ];
 
 
+// 2. STATE: the current filter and sort settings
+var state = { categories: [], minPrice: 100, maxPrice: 600, favOnly: false, sort: "price-ascending" };
+// fetching the saved favourites from localStorage
+var favourites = JSON.parse(localStorage.getItem("ee-favs") || "[]");   // saved experience IDs
+favourites = favourites.map(function (savedId) {
+  var experience = experiences.find(function (item) {
+    var legacySlug = item.title.toLowerCase().replace(/'/g, "").replace(/[^a-z0-9]+/g, "-")
+      .replace(/-and-/g, "-").replace(/^-|-$/g, "");
+    return item.id === Number(savedId) || item.title === savedId || legacySlug === savedId;
+  });
+  return experience ? experience.id : savedId;
+});
+
+
+
+var list = document.getElementById("cards");
+
+
+
+localStorage.setItem("ee-favs", JSON.stringify(favourites));
+
+
+
+// 3. RENDER the cards that match the current filters
+function render() {
+  list.innerHTML = "";
+  var shown = experiences.filter(function (e) {
+    return (!state.categories.length || state.categories.indexOf(e.category) > -1) &&
+           e.price >= state.minPrice && e.price <= state.maxPrice &&
+           (!state.favOnly || favourites.indexOf(e.id) > -1);
+  }).sort(function (a, b) {
+    var priceOrder = state.sort === "price-ascending" ? a.price - b.price : b.price - a.price;
+    return priceOrder || a.id - b.id;
+  });
+
+  shown.forEach(function (e) {
+    var saved = favourites.indexOf(e.id) > -1;
+    var gallery = e.picture_urls;
+    var li = document.createElement("li");
+    li.className = "card";
+    li.innerHTML =
+      '<div class="card-gallery">' +
+        '<img class="gallery-image" src="' + gallery[0] + '" alt="' + e.alt + '" width="800" height="500" loading="lazy">' +
+        '<button class="gallery-arrow gallery-previous" type="button" aria-label="Previous image for ' + e.title + '">&#8249;</button>' +
+        '<button class="gallery-arrow gallery-next" type="button" aria-label="Next image for ' + e.title + '">&#8250;</button>' +
+        '<span class="gallery-count" aria-live="polite">1 / ' + gallery.length + '</span>' +
+        '<button class="fav" type="button" aria-pressed="' + saved + '" aria-label="Save ' + e.title + '" data-id="' + e.id + '">' + (saved ? "\u2665" : "\u2661") + '</button>' +
+      '</div>' +
+      '<div class="body"><span class="loc">' + e.loc + ' (' + e.category + ')</span>' +
+      '<h3>' + e.title + '</h3><p>' + e.desc + '</p>' +
+      '<div class="meta"><span>' + e.days + (e.days === 1 ? " day" : " days") + '</span><span class="price">&euro;' + e.price + ' pp</span></div></div>';
+    list.appendChild(li);
+
+    var image = li.querySelector(".gallery-image");
+    var count = li.querySelector(".gallery-count");
+    var imageIndex = 0;
+    li.querySelectorAll(".gallery-arrow").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var direction = button.classList.contains("gallery-next") ? 1 : -1;
+        imageIndex = (imageIndex + direction + gallery.length) % gallery.length;
+        image.src = gallery[imageIndex];
+        image.alt = imageIndex === 0 ? e.alt : e.title + " - image " + (imageIndex + 1);
+        count.textContent = (imageIndex + 1) + " / " + gallery.length;
+      });
+    });
+  });
+
+//   document.getElementById("result-count").textContent = "Showing " + shown.length + " of " + experiences.length + " experiences";
+  document.getElementById("empty").style.display = shown.length ? "none" : "block";
+  document.getElementById("fav-count").textContent = favourites.length;
+}
+
+
 // 4. CATEGORY CHECKBOXES (built from the data so new categories appear automatically)
 var categories = experiences.map(function (e) { return e.category; }).filter(function (category, index, all) {
   return all.indexOf(category) === index;
@@ -50,3 +123,6 @@ categories.forEach(function (category, categoryIndex) {
   option.appendChild(name);
   categoryOptions.appendChild(option);
 });
+
+
+render();
