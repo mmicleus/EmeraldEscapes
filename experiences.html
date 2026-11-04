@@ -111,7 +111,7 @@
               <!-- filters heading -->
               <div class="d-flex justify-content-between align-items-center">
                 <h4>Filters</h4>
-                <button class="btn btn-outline">Reset</button>
+                <button class="btn btn-outline" id="reset">Reset</button>
               </div>
               <!-- end of filters heading -->
 
@@ -155,7 +155,28 @@
                   id="category-options"
                   role="group"
                   aria-label="Filter by category"
-                ></div>
+                >
+                  <label class="category-option" for="category-city">
+                    <input type="checkbox" id="category-city" value="City" />
+                    <span>City</span>
+                  </label>
+                  <label class="category-option" for="category-coastal">
+                    <input type="checkbox" id="category-coastal" value="Coastal" />
+                    <span>Coastal</span>
+                  </label>
+                  <label class="category-option" for="category-countryside">
+                    <input type="checkbox" id="category-countryside" value="Countryside" />
+                    <span>Countryside</span>
+                  </label>
+                  <label class="category-option" for="category-family">
+                    <input type="checkbox" id="category-family" value="Family" />
+                    <span>Family</span>
+                  </label>
+                  <label class="category-option" for="category-cultural">
+                    <input type="checkbox" id="category-cultural" value="Cultural" />
+                    <span>Cultural</span>
+                  </label>
+                </div>
               </div>
               <div class="filter-group">
                 <h4>Saved experiences</h4>
@@ -183,7 +204,7 @@
             <p id="empty">No experiences match these filters. Try a higher price or a different category.</p> 
 
             <!-- javascript will render all the experience cards in this container -->
-            <ul class="cards" id="cards"></ul>
+            <ul class="cards d-flex flex-column gap-5 p-0 m-0" id="cards"></ul>
             
                 
           </div>

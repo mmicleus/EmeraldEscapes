@@ -7,7 +7,11 @@ var TripCategory = Object.freeze({
   CULTURAL: "Cultural"
 });
 
+var MIN_PRICE = 100;
+var MAX_PRICE = 600;
 
+
+// the list of experiences to be displayed by the frontend
 var experiences = [
   { id: 1, title: "Dublin By Night Fest", loc: "Dublin", category: TripCategory.CITY, days: 3, price: 320, picture_urls: ["images/DublinByNightFest/1.jpg","images/DublinByNightFest/2.jpg","images/DublinByNightFest/3.jpg","images/DublinByNightFest/4.jpg","images/DublinByNightFest/5.jpg"], alt: "Dublin skyline at sunset", desc: "Dublin’s free after-dark street festival, with live music, food, culture and street entertainment across the city centre. It opens the Winter in Dublin season." },
   { id: 2, title: "Galway Arts Break", loc: "Galway", category: TripCategory.CITY, days: 2, price: 210, picture_urls: ["https://upload.wikimedia.org/wikipedia/commons/c/cd/Galway_-_Southwest_end_of_Shop_Street_-_geograph.org.uk_-_1631334.jpg", "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/GalwayStreet%28js%29.jpg/960px-GalwayStreet%28js%29.jpg"], alt: "Galway's Shop Street", desc: "Street theatre, seafood on the quays and a sunset walk along Salthill." },
@@ -30,20 +34,131 @@ var experiences = [
 
 // 2. STATE: the current filter and sort settings
 var state = { categories: [], minPrice: 100, maxPrice: 600, favOnly: false, sort: "price-ascending" };
-// fetching the saved favourites from localStorage
-var favourites = JSON.parse(localStorage.getItem("ee-favs") || "[]");   // saved experience IDs
-favourites = favourites.map(function (savedId) {
-  var experience = experiences.find(function (item) {
-    var legacySlug = item.title.toLowerCase().replace(/'/g, "").replace(/[^a-z0-9]+/g, "-")
-      .replace(/-and-/g, "-").replace(/^-|-$/g, "");
-    return item.id === Number(savedId) || item.title === savedId || legacySlug === savedId;
-  });
-  return experience ? experience.id : savedId;
-});
+
+// Load saved favourites; default to an empty list for first-time visitors.
+var favourites = JSON.parse(localStorage.getItem("ee-favs") || "[]");
+// favourites = favourites.map(function (savedId) {
+//   var experience = experiences.find(function (item) {
+//     var legacySlug = item.title.toLowerCase().replace(/'/g, "").replace(/[^a-z0-9]+/g, "-")
+//       .replace(/-and-/g, "-").replace(/^-|-$/g, "");
+//     return item.id === Number(savedId) || item.title === savedId || legacySlug === savedId;
+//   });
+//   return experience ? experience.id : savedId;
+// });
 
 
-
+// the container that stores experience cards
 var list = document.getElementById("cards");
+
+// the reset button
+
+var resetBtn = document.getElementById("reset");
+
+
+
+
+// min and max filters
+var minInput = document.getElementById("price-min");
+var maxInput = document.getElementById("price-max");
+
+// category inputs
+var categoryInputs= document.querySelectorAll(".category-option input")
+
+// saved experiences toggle
+var savedBtn = document.getElementById("fav-only")
+
+//card 
+
+
+
+// add event listeners
+
+savedBtn.addEventListener("click", function(e){
+
+  if(e.target.getAttribute("aria-pressed") == "false"){
+    e.target.setAttribute("aria-pressed","true")
+    state.favOnly = true
+    render()
+  }
+  else{
+    e.target.setAttribute("aria-pressed","false")
+    state.favOnly = false
+    render()
+  }
+
+  
+  
+
+})
+
+
+// when 'reset' btn is clicked
+resetBtn.addEventListener("click",function(e){
+
+  // reset the state object
+  state = { categories: [], minPrice: 100, maxPrice: 600, favOnly: false, sort: "price-ascending" };
+
+  // uncheck category checkboxes
+  categoryInputs.forEach(e => {
+    e.checked = false
+  })
+
+  // toggle 'saved experiences' off
+  savedBtn.setAttribute("aria-pressed","false")
+
+  // reset minPrice and maxPrice input fields
+  minInput.value = 100
+  maxInput.value = 600
+
+
+  render()
+})
+
+
+
+
+
+// selecting or deselecting a category will update the 'state' object and rerender the cards
+categoryInputs.forEach(function(c){
+    
+    c.addEventListener("change",function(e){
+
+       category = e.target.value
+      if (e.target.checked){
+        state.categories.push(category)
+      
+      }else{
+        state.categories = state.categories.filter(e => e !== category)
+      }
+
+        render()
+      
+    })
+
+})
+
+
+
+// validating min and max price filters
+
+minInput.addEventListener("change", function () {
+  minInput.value = Math.min(Math.max(minInput.value, MIN_PRICE), maxInput.value)
+  state.minPrice = minInput.value
+  render()
+})
+
+
+maxInput.addEventListener("change", function () {
+
+  maxInput.value = Math.min(Math.max(maxInput.value, minInput.value), MAX_PRICE)
+  state.maxPrice = maxInput.value
+  render()
+})
+
+
+
+
+
 
 
 
@@ -54,15 +169,17 @@ localStorage.setItem("ee-favs", JSON.stringify(favourites));
 // 3. RENDER the cards that match the current filters
 function render() {
   list.innerHTML = "";
+
+
+  // shown is the list of experiences that match the current filters
   var shown = experiences.filter(function (e) {
     return (!state.categories.length || state.categories.indexOf(e.category) > -1) &&
            e.price >= state.minPrice && e.price <= state.maxPrice &&
            (!state.favOnly || favourites.indexOf(e.id) > -1);
-  }).sort(function (a, b) {
-    var priceOrder = state.sort === "price-ascending" ? a.price - b.price : b.price - a.price;
-    return priceOrder || a.id - b.id;
   });
 
+  
+  // render all the experiences in 'shown' as cards
   shown.forEach(function (e) {
     var saved = favourites.indexOf(e.id) > -1;
     var gallery = e.picture_urls;
@@ -71,9 +188,9 @@ function render() {
     li.innerHTML =
       '<div class="card-gallery">' +
         '<img class="gallery-image" src="' + gallery[0] + '" alt="' + e.alt + '" width="800" height="500" loading="lazy">' +
-        '<button class="gallery-arrow gallery-previous" type="button" aria-label="Previous image for ' + e.title + '">&#8249;</button>' +
-        '<button class="gallery-arrow gallery-next" type="button" aria-label="Next image for ' + e.title + '">&#8250;</button>' +
-        '<span class="gallery-count" aria-live="polite">1 / ' + gallery.length + '</span>' +
+        '<button class="gallery-arrow gallery-previous" type="button" >&#8249;</button>' +
+        '<button class="gallery-arrow gallery-next" type="button" >&#8250;</button>' +
+        '<span class="gallery-count" >1 / ' + gallery.length + '</span>' +
         '<button class="fav" type="button" aria-pressed="' + saved + '" aria-label="Save ' + e.title + '" data-id="' + e.id + '">' + (saved ? "\u2665" : "\u2661") + '</button>' +
       '</div>' +
       '<div class="body"><span class="loc">' + e.loc + ' (' + e.category + ')</span>' +
@@ -93,36 +210,49 @@ function render() {
         count.textContent = (imageIndex + 1) + " / " + gallery.length;
       });
     });
+
+    li.querySelector(".fav").addEventListener("click",function(e){
+      
+      const id = Number(e.currentTarget.dataset.id);
+
+      // console.log(id)
+
+      // console.log("before:")
+      // console.log(favourites)
+
+      if(e.target.getAttribute("aria-pressed") == "true"){
+
+        e.target.setAttribute("aria-pressed","false")
+
+        favourites = favourites.filter(i => {
+
+          return i != id
+        })
+        // console.log("removing")
+        
+      }
+      else{
+        e.target.setAttribute("aria-pressed","true")
+        favourites.push(id)
+
+        // console.log("adding")
+      }
+
+      // console.log("after:")
+      // console.log(favourites)
+
+      localStorage.setItem("ee-favs", JSON.stringify(favourites));
+      render()
+
+
+    })
+
   });
 
 //   document.getElementById("result-count").textContent = "Showing " + shown.length + " of " + experiences.length + " experiences";
   document.getElementById("empty").style.display = shown.length ? "none" : "block";
   document.getElementById("fav-count").textContent = favourites.length;
 }
-
-
-// 4. CATEGORY CHECKBOXES (built from the data so new categories appear automatically)
-var categories = experiences.map(function (e) { return e.category; }).filter(function (category, index, all) {
-  return all.indexOf(category) === index;
-});
-var categoryOptions = document.getElementById("category-options");
-
-categories.forEach(function (category, categoryIndex) {
-  var option = document.createElement("label");
-  var checkbox = document.createElement("input");
-  var name = document.createElement("span");
-
-  option.className = "category-option";
-  checkbox.type = "checkbox";
-  checkbox.value = category;
-  checkbox.id = "category-" + categoryIndex;
-  name.textContent = category;
-
-  option.htmlFor = checkbox.id;
-  option.appendChild(checkbox);
-  option.appendChild(name);
-  categoryOptions.appendChild(option);
-});
 
 
 render();
