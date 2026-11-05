@@ -450,13 +450,15 @@ textarea {
 }
 
 /* making the footer stick to the bottom of the page */
-.contact-page {
+.contact-page, 
+.experiences-page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-#contact-content {
+#contact-content,
+#experiences-content {
   flex: 1;
 }
 

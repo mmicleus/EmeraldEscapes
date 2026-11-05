@@ -28,12 +28,14 @@
     <!-- linking external CSS -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
+  <body class="experiences-page">
     <!-- navbar -->
 
     <nav class="navbar md:navbar-expand bg-body-tertiary" id="primary-nav">
       <div class="md:container">
-        <a class="navbar-brand" href="./index.html" id="logo">Emerald Escapes</a>
+        <a class="navbar-brand" href="./index.html" id="logo"
+          >Emerald Escapes</a
+        >
         <button
           class="btn-icon navbar-toggler"
           type="button"
@@ -63,7 +65,12 @@
           <div class="drawer-body mb-2 md:mb-0">
             <ul class="nav navbar-nav ms-auto" id="menu-list">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="./index.html"
+                  >Home</a
+                >
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="./experiences.html">Experiences</a>
@@ -72,7 +79,9 @@
                 <a class="nav-link" href="./contact.html">Contact</a>
               </li>
               <li class="nav-item">
-                 <button class="nav-link" id="theme-toggle" type="button">Dark / light</button>
+                <button class="nav-link" id="theme-toggle" type="button">
+                  Dark / light
+                </button>
               </li>
             </ul>
           </div>
@@ -80,137 +89,157 @@
       </div>
     </nav>
 
-    <div class="container-fluid p-5">
-      <div class="container">
-        <div class="row">
-          <!-- The filters column -->
-          <!-- stacks on small screens -->
-          <div class="md:col-3 col-12 mb-4">
+    <main id="experiences-content" class="md:container d-flex flex-column gap-5 p-5">
+      <div class="container-fluid p-5">
+        <div class="container">
+          <div class="row">
+            <!-- The filters column -->
+            <!-- stacks on small screens -->
+            <div class="md:col-3 col-12 mb-4">
+              <!--  filters toggle button -->
+              <button
+                class="btn btn-solid filter-toggle d-flex justify-content-between align-items-center w-100 px-3 py-3 mb-5"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#filters"
+                aria-expanded="false"
+                aria-controls="filters"
+                id="filter-toggle-button"
+              >
+                <span class="d-flex align-items-center gap-2 fw-bold">
+                  <i class="bi bi-sliders2"></i>
+                  Filters
+                </span>
+                <i class="bi bi-plus-lg toggle-icon"></i>
+              </button>
 
+              <!-- collapsable filters container -->
+              <div class="d-flex flex-column gap-5 collapse" id="filters">
+                <!-- filters heading -->
+                <div class="d-flex justify-content-between align-items-center">
+                  <h4>Filters</h4>
+                  <button class="btn btn-outline" id="reset">Reset</button>
+                </div>
+                <!-- end of filters heading -->
 
-            <!--  filters toggle button -->
-            <button
-              class=" btn btn-solid  filter-toggle d-flex justify-content-between align-items-center w-100 px-3 py-3 mb-5 "
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#filters"
-              aria-expanded="false"
-              aria-controls="filters"
-              id = "filter-toggle-button"
-            >
-              <span class="d-flex align-items-center gap-2 fw-bold">
-                <i class="bi bi-sliders2"></i>
-                Filters
-              </span>
-              <i class="bi bi-plus-lg toggle-icon"></i>
-            </button>
-
-
-            <!-- collapsable filters container -->
-            <div class="d-flex flex-column gap-5 collapse" id="filters">
-              <!-- filters heading -->
-              <div class="d-flex justify-content-between align-items-center">
-                <h4>Filters</h4>
-                <button class="btn btn-outline" id="reset">Reset</button>
-              </div>
-              <!-- end of filters heading -->
-
-              <!-- Price filter -->
-              <div class="price-inputs">
-                <!-- min price input -->
-                <label class="price-input">
-                  <span aria-hidden="true">&euro;</span>
-                  <input
-                    type="number"
-                    id="price-min"
-                    min="100"
-                    max="600"
-                    step="25"
-                    value="100"
-                    aria-label="Minimum price in euro"
-                  />
-                </label>
-                <label class="price-input">
-                  <span aria- idden="true">&euro;</span>
-                  <input
-                    type="number"
-                    id="price-max"
-                    min="100"
-                    max="600"
-                    step="25"
-                    value="600"
-                    aria-label="Maximum price in euro"
-                  />
-                </label>
-              </div>
-
-              <!-- end of Price filter -->
-
-              <!-- Category filter -->
-
-              <div class="filter-group">
-                <h4>Category</h4>
-                <div
-                  class="d-flex flex-column gap-5 category-options"
-                  id="category-options"
-                  role="group"
-                  aria-label="Filter by category"
-                >
-                  <label class="category-option" for="category-city">
-                    <input type="checkbox" id="category-city" value="City" />
-                    <span>City</span>
+                <!-- Price filter -->
+                <div class="price-inputs">
+                  <!-- min price input -->
+                  <label class="price-input">
+                    <span aria-hidden="true">&euro;</span>
+                    <input
+                      type="number"
+                      id="price-min"
+                      min="100"
+                      max="600"
+                      step="25"
+                      value="100"
+                      aria-label="Minimum price in euro"
+                    />
                   </label>
-                  <label class="category-option" for="category-coastal">
-                    <input type="checkbox" id="category-coastal" value="Coastal" />
-                    <span>Coastal</span>
-                  </label>
-                  <label class="category-option" for="category-countryside">
-                    <input type="checkbox" id="category-countryside" value="Countryside" />
-                    <span>Countryside</span>
-                  </label>
-                  <label class="category-option" for="category-family">
-                    <input type="checkbox" id="category-family" value="Family" />
-                    <span>Family</span>
-                  </label>
-                  <label class="category-option" for="category-cultural">
-                    <input type="checkbox" id="category-cultural" value="Cultural" />
-                    <span>Cultural</span>
+                  <label class="price-input">
+                    <span aria- idden="true">&euro;</span>
+                    <input
+                      type="number"
+                      id="price-max"
+                      min="100"
+                      max="600"
+                      step="25"
+                      value="600"
+                      aria-label="Maximum price in euro"
+                    />
                   </label>
                 </div>
-              </div>
-              <div class="filter-group">
-                <h4>Saved experiences</h4>
-                <button
-                  type="button"
-                  class="chip"
-                  id="fav-only"
-                  aria-pressed="false"
-                >
-                  Saved only (<span id="fav-count">0</span>)
-                </button>
-              </div>
 
-              <!-- End of Category filter -->
-            
+                <!-- end of Price filter -->
+
+                <!-- Category filter -->
+
+                <div class="filter-group">
+                  <h4>Category</h4>
+                  <div
+                    class="d-flex flex-column gap-5 category-options"
+                    id="category-options"
+                    role="group"
+                    aria-label="Filter by category"
+                  >
+                    <label class="category-option" for="category-city">
+                      <input type="checkbox" id="category-city" value="City" />
+                      <span>City</span>
+                    </label>
+                    <label class="category-option" for="category-coastal">
+                      <input
+                        type="checkbox"
+                        id="category-coastal"
+                        value="Coastal"
+                      />
+                      <span>Coastal</span>
+                    </label>
+                    <label class="category-option" for="category-countryside">
+                      <input
+                        type="checkbox"
+                        id="category-countryside"
+                        value="Countryside"
+                      />
+                      <span>Countryside</span>
+                    </label>
+                    <label class="category-option" for="category-family">
+                      <input
+                        type="checkbox"
+                        id="category-family"
+                        value="Family"
+                      />
+                      <span>Family</span>
+                    </label>
+                    <label class="category-option" for="category-cultural">
+                      <input
+                        type="checkbox"
+                        id="category-cultural"
+                        value="Cultural"
+                      />
+                      <span>Cultural</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="filter-group">
+                  <h4>Saved experiences</h4>
+                  <button
+                    type="button"
+                    class="chip"
+                    id="fav-only"
+                    aria-pressed="false"
+                  >
+                    Saved only (<span id="fav-count">0</span>)
+                  </button>
+                </div>
+
+                <!-- End of Category filter -->
+              </div>
             </div>
+            <!-- The experiences column -->
+            <div class="md:col-9 col-12 mb-4">
+              <h3 class="text-start">Choose Your Experience</h3>
+              <p class="text-start">
+                Browse trips around Ireland. Save the ones you like with the
+                heart.
+              </p>
+              <!-- <p id="result-count"></p> -->
+              <!-- this will only be displayed if no cards rendered -->
+              <p id="empty">
+                No experiences match these filters. Try a higher price or a
+                different category.
+              </p>
 
-          </div>
-          <!-- The experiences column -->
-          <div class="md:col-9 col-12 mb-4" >
-            <h3 class="text-start">Choose Your Experience</h3>
-            <p class="text-start">Browse trips around Ireland. Save the ones you like with the heart.</p>
-            <!-- <p id="result-count"></p> -->
-            <!-- this will only be displayed if no cards rendered -->
-            <p id="empty">No experiences match these filters. Try a higher price or a different category.</p> 
-
-            <!-- javascript will render all the experience cards in this container -->
-            <ul class="cards d-flex flex-column gap-5 p-0 m-0" id="cards"></ul>
-            
-                
+              <!-- javascript will render all the experience cards in this container -->
+              <ul
+                class="cards d-flex flex-column gap-5 p-0 m-0"
+                id="cards"
+              ></ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
 
     <footer
       class="container-fluid d-flex justify-content-center align-items-center p-5"
