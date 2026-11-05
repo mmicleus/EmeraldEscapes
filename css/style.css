@@ -25,6 +25,16 @@
   --accent: #bce000;
 }
 
+/* Dark theme overrides the same variables (toggled by js/main.js) */
+[data-theme="dark"] {
+  --bg: #101810;
+  --card: #1b2a1d;
+  --ink: #f2f5ed;
+  --muted: #b8c4b4;
+  --line: #354638;
+  --accent: #bce000;
+}
+
 /* ----- Buttons ----- */
 .btn {
   display: inline-block;
@@ -235,8 +245,8 @@ button[data-bs-slide] {
 
 /* 'saved experiences' toggle */
 .chip {
-  background: var(--card);
-  color: var(--ink);
+  background: #ffffff;
+  color: #173803;
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 0.4rem 1rem;
@@ -346,12 +356,14 @@ button[data-bs-slide] {
 .card h3 {
   margin: 0;
   font-size: 1.2rem;
+  color:var(--ink)
 }
 .loc {
-  color: var(--blue);
+  color: var(--accent);
   font-weight: 600;
   font-size: 0.9rem;
 }
+
 .card p {
   margin: 0;
   color: var(--muted);
@@ -363,6 +375,7 @@ button[data-bs-slide] {
   align-items: flex-end;
   gap: 1rem;
   margin-top: 0.5rem;
+  color: var(--ink)
 }
 .price {
   font-weight: 800;
@@ -381,22 +394,19 @@ button[data-bs-slide] {
   height: 2.5rem;
   border: 1px solid #fff;
   border-radius: 50%;
-  background: rgba(23, 56, 3, 0.
-  78);
+  background: rgba(23, 56, 3, 0 78);
   font-size: 1.5rem;
   cursor: pointer;
   color: #fff;
 }
 
-
- .fav[aria-pressed] {
+.fav[aria-pressed] {
   color: #d6403a;
-  
-} 
+}
 
 /* when the 'saved experiences' button is clicked */
 
-#fav-only[aria-pressed="true"] { 
+#fav-only[aria-pressed="true"] {
   background-color: var(--gorse);
 }
 
@@ -423,23 +433,21 @@ button[data-bs-slide] {
   }
 }
 
-
-
-
 /* form */
 
-#form{
-  width:min(100%,600px);
-  background-color:#fff;
+#form {
+  width: min(100%, 600px);
+  background-color: #fff;
   border-radius: var(--radius);
-  border: 1px solid var(--gorse) ;
-  padding:2rem;
+  border: 1px solid var(--gorse);
+  padding: 2rem;
 }
 
-#form input,select,textarea{
-  background-color: var(--bg);
+#form input,
+select,
+textarea {
+  background-color: #f7faef;
 }
-
 
 /* making the footer stick to the bottom of the page */
 .contact-page {
@@ -452,6 +460,6 @@ button[data-bs-slide] {
   flex: 1;
 }
 
-#form .error{
+#form .error {
   color: #d6403a;
 }

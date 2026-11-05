@@ -1,32 +1,11 @@
-var menuToggle = document.getElementById("mobile-menu-toggle");
-var menuList = document.getElementById("menu-list");
-// var mobileMenu = window.matchMedia("(max-width: 768px)");
+// the dark/light toggle btn
 
-function setMenuOpen(isOpen) {
-  menuToggle.setAttribute("aria-expanded", isOpen);
-  menuToggle.setAttribute(
-    "aria-label",
-    isOpen ? "Close navigation menu" : "Open navigation menu"
-  );
-  menuList.classList.toggle("open", isOpen);
-}
+var themeBtn = document.getElementById("theme-toggle");
 
-menuToggle.addEventListener("click", function () {
-  setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
-});
+// when dark/light toggle btn is clicked, we toggle the 'dark-theme' attribute on the root element
 
-menuList.addEventListener("click", function (event) {
-  if (event.target.closest("a")) setMenuOpen(false);
-});
-
-// document.addEventListener("keydown", function (event) {
-//   if (event.key === "Escape" &&
-//       menuToggle.getAttribute("aria-expanded") === "true") {
-//     setMenuOpen(false);
-//     menuToggle.focus();
-//   }
-// });
-
-// mobileMenu.addEventListener("change", function (event) {
-//   if (!event.matches) setMenuOpen(false);
-// });
+themeBtn.addEventListener("click", function () {
+    var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    // localStorage.setItem("ee-theme", next);
+  });
