@@ -422,3 +422,36 @@ button[data-bs-slide] {
     aspect-ratio: auto;
   }
 }
+
+
+
+
+/* form */
+
+#form{
+  width:min(100%,600px);
+  background-color:#fff;
+  border-radius: var(--radius);
+  border: 1px solid var(--gorse) ;
+  padding:2rem;
+}
+
+#form input,select,textarea{
+  background-color: var(--bg);
+}
+
+
+/* making the footer stick to the bottom of the page */
+.contact-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#contact-content {
+  flex: 1;
+}
+
+#form .error{
+  color: #d6403a;
+}

@@ -178,6 +178,11 @@ function render() {
            (!state.favOnly || favourites.indexOf(e.id) > -1);
   });
 
+  shown.sort((a,b) => a.price - b.price)
+
+
+ 
+
   
   // render all the experiences in 'shown' as cards
   shown.forEach(function (e) {
