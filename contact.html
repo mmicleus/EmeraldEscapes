@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Emerald Escapes | Holidays and short breaks in Ireland</title>
-    <!-- adding Google Fonts  -->
+    <!-- adding Bootstrap  -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -31,9 +31,11 @@
   <body class="contact-page">
     <!-- navbar -->
 
-     <nav class="navbar md:navbar-expand bg-body-tertiary" id="primary-nav">
+    <nav class="navbar md:navbar-expand bg-body-tertiary" id="primary-nav">
       <div class="md:container">
-        <a class="navbar-brand" href="./index.html" id="logo">Emerald Escapes</a>
+        <a class="navbar-brand" href="./index.html" id="logo"
+          >Emerald Escapes</a
+        >
         <button
           class="btn-icon navbar-toggler"
           type="button"
@@ -63,7 +65,10 @@
           <div class="drawer-body mb-2 md:mb-0">
             <ul class="nav navbar-nav ms-auto" id="menu-list">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./index.html"
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="./index.html"
                   >Home</a
                 >
               </li>
@@ -74,7 +79,9 @@
                 <a class="nav-link" href="./contact.html">Contact</a>
               </li>
               <li class="nav-item">
-                 <button class="nav-link" id="theme-toggle" type="button">Dark / light</button>
+                <button class="nav-link" id="theme-toggle" type="button">
+                  Dark / light
+                </button>
               </li>
             </ul>
           </div>
@@ -82,94 +89,90 @@
       </div>
     </nav>
 
-    <main id="contact-content" class="md:container d-flex flex-column gap-5 p-5">
+    <main
+      id="contact-content"
+      class="md:container d-flex flex-column gap-5 p-5"
+    >
+      <div class="md:container d-flex flex-column gap-5 p-5">
+        <h3 class="fw-bold">Booking Enquiry</h3>
 
-         <!-- The form -->
-    <div class="md:container d-flex flex-column gap-5 p-5">
-      <h3 class="fw-bold">Booking Enquiry</h3>
+        <p>Make an enquiry and we will reply in no time</p>
 
-      <p>Make an enquiry and we will reply in no time</p>
-
-      <form id="form" class="p-5">
-
-        <div class="formField">
+        <!-- The form -->
+        <form id="form" class="p-5">
+          <div class="formField">
             <label for="nameInput" class="form-label">Name *</label>
             <input type="text" class="form-control mb-5" id="nameInput" />
             <p class="error" id="name-error"></p>
-        </div>
-        <!-- email input -->
+          </div>
+          <!-- email input -->
 
-        <div class="formField">
+          <div class="formField">
             <label for="emailInput" class="form-label fw-bold">Email *</label>
             <input
-            type="email"
-            class="form-control mb-5"
-            id="emailInput"
-            placeholder="name@example.com"
+              type="email"
+              class="form-control mb-5"
+              id="emailInput"
+              placeholder="name@example.com"
             />
             <p class="error" id="email-error"></p>
-        </div>
-      
+          </div>
 
-        <div class="formField">
-        <!-- phone input -->
-        <label for="phoneInput" class="form-label fw-bold">Phone *</label>
-        <input
-            type="text"
-            class="form-control mb-5"
-            id="phoneInput"
-            placeholder="+353 87 123 4567"
-        />
-         <p class="error" id="phone-error"></p>
+          <div class="formField">
+            <!-- phone input -->
+            <label for="phoneInput" class="form-label fw-bold">Phone *</label>
+            <input
+              type="text"
+              class="form-control mb-5"
+              id="phoneInput"
+              placeholder="+353 87 123 4567"
+            />
+            <p class="error" id="phone-error"></p>
+          </div>
+
+          <!-- query type selection  -->
+
+          <div class="form-field mb-5">
+            <label for="queryTypeSelect" class="form-label fw-bold"
+              >Query type *</label
+            >
+            <select class="form-control" id="queryTypeSelect">
+              <option selected value="0">Choose one</option>
+              <option value="1">Booking</option>
+              <option value="2">Payment</option>
+              <option value="3">General Information</option>
+              <option value="4">Other</option>
+            </select>
+            <p class="error" id="query-error"></p>
+          </div>
+
+          <!-- message input -->
+
+          <div class="form-field mb-5">
+            <label for="messageInput" class="form-label fw-bold">Message</label>
+            <textarea
+              class="form-control"
+              id="messageInput"
+              rows="3"
+            ></textarea>
+            <p class="error" id="message-error"></p>
+          </div>
+
+          <button class="btn btn-solid" type="submit">Send enquiry</button>
+
+          <div
+            class="alert alert-success mt-5 d-none"
+            role="alert"
+            id="success-alert"
+          >
+            Thank your for your enquiry. A member of our team will assist you as
+            soon as possible
+          </div>
+        </form>
       </div>
 
-      <!-- query type selection  -->
-
-      
-      <div class="form-field mb-5">
-        <label for="queryTypeSelect" class="form-label fw-bold">Query type *</label>
-        <select class="form-control" id="queryTypeSelect">
-          <option selected value="0">Choose one</option>
-          <option value="1">Booking</option>
-          <option value="2">Payment</option>
-          <option value="3">General Information</option>
-          <option value="4">Other</option>
-        </select>
-        <p class="error" id="query-error"></p>
-      </div>
-
-
-      <!-- message input -->
-
-      <div class="form-field mb-5">
-        <label for="messageInput" class="form-label fw-bold">Message</label>
-        <textarea class="form-control" id="messageInput" rows="3"></textarea>
-        <p class="error" id="message-error"></p>
-      </div>
-
-      <button class="btn btn-solid" type="submit">Send enquiry</button>
-
-      <div class="alert alert-success mt-5 d-none" role="alert" id="success-alert">
-        Thank your for your enquiry. A member of our team will assist you as soon as possible
-      </div>
-
-      </form>
-    </div>
-
-    
-
-    
-    <!-- end of the form -->
-  </main>
-
-
-
- 
-
-
-   
-
-   
+      <!-- end of the form -->
+    </main>
 
     <footer
       class="container-fluid d-flex justify-content-center align-items-center p-5"
@@ -177,7 +180,6 @@
     >
       <div>&copy; <span id="year">2026</span> Emerald Escapes</div>
     </footer>
-
     <script src="js/main.js"></script>
     <script src="js/contact.js"></script>
   </body>

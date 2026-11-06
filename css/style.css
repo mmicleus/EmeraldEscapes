@@ -14,17 +14,6 @@
   --font-heading: "Lora", Georgia, "Times New Roman", serif;
 }
 
-/* Dark Theme variable values */
-/* document.documentElement.classList.toggle("dark"); */
-.dark {
-  --bg: #101810;
-  --card: #1b2a1d;
-  --ink: #f2f5ed;
-  --muted: #b8c4b4;
-  --line: #354638;
-  --accent: #bce000;
-}
-
 /* Dark theme overrides the same variables (toggled by js/main.js) */
 [data-theme="dark"] {
   --bg: #101810;
@@ -66,7 +55,6 @@ h3 {
 }
 
 /* header */
-
 #primary-nav {
   background: var(--gorse);
 }
@@ -97,7 +85,6 @@ h3 {
 }
 
 /* hero section */
-
 #hero {
   background:
     linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
@@ -123,14 +110,11 @@ h3 {
 }
 
 #our-story {
-  /* background: var(--leaf); */
-  /* color: var(--bg); */
   padding: 4rem 0;
   text-align: center;
 }
 
 /* what we offer section */
-
 #what-we-offer .offer-card {
   position: relative;
   overflow: hidden;
@@ -148,7 +132,6 @@ h3 {
 }
 
 /* overlay the card title over the image */
-
 #what-we-offer .offer-card-title {
   position: absolute;
   z-index: 1;
@@ -162,7 +145,6 @@ h3 {
 }
 
 /* make all images fill their containers and maintain same height */
-
 #what-we-offer .carousel-inner img {
   display: block;
   width: 100%;
@@ -175,7 +157,6 @@ button[data-bs-slide] {
 }
 
 /* footer */
-
 #footer {
   background: var(--gorse);
   /* color: var(--bg); */
@@ -184,7 +165,6 @@ button[data-bs-slide] {
 
 /* price filters */
 
-/* .price-input { display: flex; align-items: center; gap: .45rem; margin: 0; font-size: 1.1rem; font-weight: 600; } */
 .price-input input {
   height: 3.7rem;
   padding: 0.5rem 0.7rem;
@@ -209,7 +189,6 @@ button[data-bs-slide] {
 
 /* category filters */
 
-/* #category-options { display: grid; gap: .65rem; } */
 .category-option {
   display: flex;
   align-items: center;
@@ -224,21 +203,6 @@ button[data-bs-slide] {
   margin: 0;
   accent-color: #4b5ed0;
   cursor: pointer;
-}
-
-@media (min-width: 768px) {
-  /* hide the filters toggle */
-  #filter-toggle-button {
-    display: none;
-  }
-
-  /* show the filters container */
-  #filters {
-    display: flex !important;
-    /* overrides Bootstrap’s collapsed zero-height setting */
-    block-size: auto !important;
-    overflow: visible;
-  }
 }
 
 /* experiences cards */
@@ -268,10 +232,6 @@ button[data-bs-slide] {
 }
 
 .cards {
-  /* display: grid;
-  gap: 1rem;
-  padding: 0;
-  margin: 0; */
   list-style: none;
 }
 
@@ -418,22 +378,8 @@ button[data-bs-slide] {
   color: var(--muted);
 }
 
-@media (max-width: 768px) {
-  .card {
-    /* adjust height with viewport width */
-    height: clamp(680px, 100vw, 820px);
 
-    /* stack the card content */
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-  }
-  .card-gallery {
-    min-height: 0;
-    aspect-ratio: auto;
-  }
-}
-
-/* form */
+/* form styles*/
 
 #form {
   width: min(100%, 600px);
@@ -464,4 +410,36 @@ textarea {
 
 #form .error {
   color: #d6403a;
+}
+
+/* media queries */
+@media (max-width: 768px) {
+  .card {
+    /* adjust height with viewport width */
+    height: clamp(680px, 100vw, 820px);
+
+    /* stack the card content */
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+  .card-gallery {
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+}
+
+
+@media (min-width: 768px) {
+  /* hide the filters toggle */
+  #filter-toggle-button {
+    display: none;
+  }
+
+  /* show the filters container */
+  #filters {
+    display: flex !important;
+    /* overrides Bootstrap’s collapsed zero-height setting */
+    block-size: auto !important;
+    overflow: visible;
+  }
 }

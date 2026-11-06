@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Emerald Escapes | Holidays and short breaks in Ireland</title>
-    <!-- adding Google Fonts  -->
+
+    <!-- importing Bootstrap  -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -17,6 +18,7 @@
       integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
       crossorigin="anonymous"
     ></script>
+
     <!-- importing Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,7 +35,7 @@
 
     <nav class="navbar md:navbar-expand bg-body-tertiary" id="primary-nav">
       <div class="md:container">
-        <a class="navbar-brand" href="#" id="logo">Emerald Escapes</a>
+        <a class="navbar-brand" href="index.html" id="logo">Emerald Escapes</a>
         <button
           class="btn-icon navbar-toggler"
           type="button"
@@ -63,17 +65,32 @@
           <div class="drawer-body mb-2 md:mb-0">
             <ul class="nav navbar-nav ms-auto" id="menu-list">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./index.html" id="homeBtn">Home</a>
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="./index.html"
+                  id="homeBtn"
+                  >Home</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./experiences.html" id="experiencesBtn">Experiences</a>
+                <a
+                  class="nav-link"
+                  href="./experiences.html"
+                  id="experiencesBtn"
+                  >Experiences</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./contact.html" id="contactBtn">Contact</a>
+                <a class="nav-link" href="./contact.html" id="contactBtn"
+                  >Contact</a
+                >
               </li>
               <li class="nav-item">
                 <!-- <a class="nav-link" href="#">Dark / light</a> -->
-                 <button class="nav-link" id="theme-toggle" type="button">Dark / light</button>
+                <button class="nav-link" id="theme-toggle" type="button">
+                  Dark / light
+                </button>
               </li>
             </ul>
           </div>
@@ -99,7 +116,9 @@
             </p>
           </div>
           <div class="col-12 text-center">
-            <a href="#" class="btn btn-solid">Browse experiences</a>
+            <a href="./experiences.html" class="btn btn-solid"
+              >Browse experiences</a
+            >
           </div>
         </div>
       </div>
@@ -118,10 +137,14 @@
           </div>
           <div class="col-12 text-start">
             <p>
-              Emerald Escapes began in 2015 when two friends from Galway got
-              tired of watching visitors queue at the same five attractions. We
-              now plan holidays and short breaks across all 32 counties, with a
-              focus on places and hosts that most itineraries skip.
+              Emerald Escapes was founded in 2011 in Dingle, County Kerry, by
+              Siobhán and Declan Murphy, a former tour guide and a retired ferry
+              captain. Tired of watching visitors rush through Ireland on packed
+              coach schedules, they set out to show the country they knew: the
+              hidden music sessions, the family-run guesthouses and the places
+              no guidebook mentions. Today our team of 40 travel designers and
+              local guides creates journeys across all 32 counties, always
+              through the people who live here.
             </p>
             <p>
               We design trips for couples after a long weekend, families looking
@@ -153,7 +176,7 @@
             >
               <div class="d-flex justify-content-between align-items-center">
                 <!-- <h5 class="mb-0"></h5> -->
-                  <h3 class="mb-5">What we offer</h3>
+                <h3 class="mb-5">What we offer</h3>
                 <div>
                   <button
                     class="btn-icon btn-sm"
@@ -233,16 +256,19 @@
             </div>
           </div>
           <div class="col-12 mb-12 mt-12">
-            <a href="#" class="btn btn-solid">Browse experiences</a>
+            <a href="experiences.html" class="btn btn-solid"
+              >Browse experiences</a
+            >
           </div>
         </div>
       </div>
     </div>
-
-  <footer class="container-fluid d-flex justify-content-center align-items-center p-5" id="footer">
-    <div>&copy; <span id="year">2026</span> Emerald Escapes</div>
-  </footer>
-
+    <footer
+      class="container-fluid d-flex justify-content-center align-items-center p-5"
+      id="footer"
+    >
+      <div>&copy; <span id="year">2026</span> Emerald Escapes</div>
+    </footer>
     <script src="js/main.js"></script>
   </body>
 </html>
